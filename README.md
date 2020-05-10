@@ -1,4 +1,4 @@
-# This is toy
+# This is a toy
 
 ## 介绍
 Fun toys !
