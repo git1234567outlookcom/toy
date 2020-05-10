@@ -1,0 +1,11 @@
+
+title = "DEV SERVER CONFIG"
+
+[database]
+   username=""
+   password=""
+   uri="127.0.0.1:27017"
+   name="server"
+
+[logconfig]
+   level="debug"

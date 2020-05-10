@@ -1,0 +1,1 @@
+curl  -X POST   http://localhost:8088/api/user/save   -H 'Content-Type: application/json'   -d '{"name":"Joe","email":"joe@labstack"}'

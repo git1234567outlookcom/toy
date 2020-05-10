@@ -1,0 +1,8 @@
+
+title = "TEST SERVER CONFIG"
+
+[database]
+   username="root"
+   password="SW4O/+nF8V59txTXeRDGmA=="
+   rri="mongodb://192.168.112.150:27017"
+   name="server"
