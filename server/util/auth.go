@@ -52,9 +52,9 @@ func CheckJwt(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(ctx echo.Context) error {
 		tokenRaw := ctx.Request().Header.Get(echo.HeaderAuthorization) // header 查找token
 		if tokenRaw == "" {
-			ctx.JSON(400, model.ResErr{
+			ctx.JSON(200, model.ResErr{
 				Message:   "请重新登陆",
-				Code:      400,
+				Code:      401,
 				Timestamp: time.Now().Unix(),
 			})
 			return nil
@@ -63,14 +63,14 @@ func CheckJwt(next echo.HandlerFunc) echo.HandlerFunc {
 		user, err := ValidateToken(tokenRaw)
 		if err != nil {
 			ctx.Logger().Error(err)
-			ctx.JSON(400, model.ResErr{
+			ctx.JSON(200, model.ResErr{
 				Message:   "请重新登陆",
-				Code:      400,
+				Code:      401,
 				Timestamp: time.Now().Unix(),
 			})
 			return nil
 		}
-		ctx.Set("uid", user.Id)
+		ctx.Set("userId", user.Id)
 		// 自定义头
 		return next(ctx)
 	}

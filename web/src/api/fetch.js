@@ -26,7 +26,7 @@ fetch.interceptors.response.use(
     function (res) {
         ViewUI.LoadingBar.finish();
         //在这里对返回的数据进行处理
-        console.log("recv:",res);
+        console.log(res.data);
         if (res.data.code == 330) {
             // ViewUI.Notice.error({
             // 	duration: 3,

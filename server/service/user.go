@@ -22,7 +22,7 @@ func (s *UserService) DeleteById(u *model.User) error {
 	return s.Dao.DeleteByFilter(filter)
 }
 
-func (s *UserService) FindList(page *model.PageInfo) ([]*model.User, error) {
+func (s *UserService) FindList(page *model.Page) ([]*model.User, error) {
 	return s.Dao.FindList(page)
 }
 func (s *UserService) FindPhoneOrEmail(m *model.User) (*model.User, error) {

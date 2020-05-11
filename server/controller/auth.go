@@ -40,6 +40,8 @@ func Login(c echo.Context) error {
 	if user.Password != m.Password {
 		return Res400Msg(c, "密码不正确")
 	}
+
+	// todo 返回menus 的路由，vue 动态的新增add router
 	token := util.GenerateToken(user)
 	s := struct {
 		Token string `json:"token"`

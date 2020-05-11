@@ -73,8 +73,10 @@ func (c *UserController) Save(e echo.Context) error {
 }
 
 func (c *UserController) FindList(context echo.Context) error {
-	page := new(model.PageInfo)
-	context.Bind(page)
+	page := new(model.Page)
+	if err := context.Bind(page); err != nil {
+		return Res400Err(context, err)
+	}
 	list, err := c.Service.FindList(page.Default())
 	if err != nil {
 		Res503(context, err)
@@ -89,7 +91,6 @@ func (c *UserController) Update(e echo.Context) error {
 	}
 	if u.Id == "" {
 		return Res400(e)
-
 	}
 	update, err := c.Service.Update(u.SetObjectId())
 	if err != nil {

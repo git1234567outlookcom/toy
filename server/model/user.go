@@ -11,6 +11,7 @@ type User struct {
 	Age      int                `json:"age" bson:"age,omitempty"`
 	Email    string             `json:"email" bson:"email,omitempty"`
 	Phone    string             `json:"phone" bson:"phone,omitempty"`
+	RoleId   string             `json:"roleId"`
 }
 
 func (u *User) SetObjectId() *User {

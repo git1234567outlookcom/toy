@@ -3,11 +3,11 @@ package main
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"net/http"
 	"os"
 	"server/config"
 	"server/controller"
 	"server/database"
+	"server/util"
 )
 
 func main() {
@@ -17,14 +17,14 @@ func main() {
 	e := echo.New()
 	e.Use(middleware.Secure())
 	e.Use(middleware.Logger())
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	controller.RouterAuth(e.Group("/auth"))
-	controller.RouterUser(e.Group("/user"))
-	controller.RouterSystem(e.Group("/system"))
-	controller.RouterCategory(e.Group("/category"))
-	controller.RouterTechnology(e.Group("/technology"))
-	//CheckJwt()
+	initRouter(e)
 	e.Logger.Fatal(e.Start(":8088"))
+}
+
+func initRouter(e *echo.Echo) {
+	controller.RouterAuth(e.Group("/auth"))
+	controller.RouterUser(e.Group("/user", util.CheckJwt))
+	controller.RouterSystem(e.Group("/system", util.CheckJwt))
+	controller.RouterCategory(e.Group("/category", util.CheckJwt))
+	controller.RouterTechnology(e.Group("/technology", util.CheckJwt))
 }

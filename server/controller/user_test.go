@@ -16,7 +16,7 @@ func TestName(t *testing.T) {
 
 	fmt.Printf("%+v", users)
 
-	page := model.PageInfo{
+	page := model.Page{
 		PageNum:   0,
 		PageCount: 0,
 		Limit:     10,

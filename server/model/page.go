@@ -5,18 +5,18 @@ import (
 	"math"
 )
 
-type PageInfo struct {
+type Page struct {
 	PageNum   int64 `json:"pageNum,omitempty" desc:"第几页"`
 	PageCount int64 `json:"countPage,omitempty" desc:"总页数"`
 	Limit     int64 `json:"limit" desc:"每页多少条"`
 	Count     int64 `json:"count,omitempty" desc:"总条数"`
 }
 
-func (p *PageInfo) SetPageCount() *PageInfo {
+func (p *Page) SetPageCount() *Page {
 	p.PageCount = int64(math.Ceil(float64(p.Count) / float64(p.Limit)))
 	return p
 }
-func (p *PageInfo) Default() *PageInfo {
+func (p *Page) Default() *Page {
 	if p.Limit <= 0 {
 		p.Limit = 10
 	}
@@ -25,7 +25,7 @@ func (p *PageInfo) Default() *PageInfo {
 	}
 	return p
 }
-func (p *PageInfo) ToOptionFind() *options.FindOptions {
+func (p *Page) ToOptionFind() *options.FindOptions {
 	option := options.Find()
 	if p.Limit <= 0 || p.Limit > 1000 {
 		p.Limit = 10

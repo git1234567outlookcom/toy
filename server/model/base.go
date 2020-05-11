@@ -19,10 +19,10 @@ func (m *Base) SetId() *Base {
 }
 
 type ResErr struct {
-	//Error     interface{} `json:"error,omitempty"` //  测试使用
-	Message   string `json:"message"`
-	Code      int    `json:"code"`
-	Timestamp int64  `json:"timestamp"`
+	Error     interface{} `json:"error,omitempty"` //  测试使用
+	Message   string      `json:"message"`
+	Code      int         `json:"code"`
+	Timestamp int64       `json:"timestamp"`
 }
 
 type Res struct {

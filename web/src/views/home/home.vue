@@ -4,62 +4,62 @@
 <template>
 	<div class="home">
 		<Row>
-			<Col :md='{span:10}'>
-			<Row>
-				<Col span="12" class="collect">
-				<Card dis-hover>
-					<Row>
-						<Col span="10">
-						<Icon type="ios-megaphone"></Icon>
-						</Col>
-						<Col span="14">
-						<p class="title">文章</p>
-						<h3>{{collect.post}}</h3>
-						</Col>
-					</Row>
-				</Card>
-				</Col>
-				<Col span="12" class="collect">
-				<Card dis-hover>
-					<Row>
-						<Col span="10">
-						<Icon type="ios-map"></Icon>
-						</Col>
-						<Col span="14">
-						<p class="title">页面</p>
-						<h3>{{collect.page}}</h3>
-						</Col>
-					</Row>
-				</Card>
-				</Col>
-				<Col span="12" class="collect">
-				<Card dis-hover>
-					<Row>
-						<Col span="10">
-						<Icon type="ios-school"></Icon>
-						</Col>
-						<Col span="14">
-						<p class="title">分类</p>
-						<h3>{{collect.cate}}</h3>
-						</Col>
-					</Row>
-				</Card>
-				</Col>
-				<Col span="12" class="collect">
-				<Card dis-hover>
-					<Row>
-						<Col span="10">
-						<Icon type="ios-pricetags"></Icon>
-						</Col>
-						<Col span="14">
-						<p class="title">标签</p>
-						<h3>{{collect.tag}}</h3>
-						</Col>
-					</Row>
-				</Card>
-				</Col>
-			</Row>
-			</Col>
+			<!--	<Col :md='{span:10}'>
+                <Row>
+                    <Col span="12" class="collect">
+                    <Card dis-hover>
+                        <Row>
+                            <Col span="10">
+                            <Icon type="ios-megaphone"></Icon>
+                            </Col>
+                            <Col span="14">
+                            <p class="title">文章</p>
+                            <h3>{{collect.post}}</h3>
+                            </Col>
+                        </Row>
+                    </Card>
+                    </Col>
+                    <Col span="12" class="collect">
+                    <Card dis-hover>
+                        <Row>
+                            <Col span="10">
+                            <Icon type="ios-map"></Icon>
+                            </Col>
+                            <Col span="14">
+                            <p class="title">页面</p>
+                            <h3>{{collect.page}}</h3>
+                            </Col>
+                        </Row>
+                    </Card>
+                    </Col>
+                    <Col span="12" class="collect">
+                    <Card dis-hover>
+                        <Row>
+                            <Col span="10">
+                            <Icon type="ios-school"></Icon>
+                            </Col>
+                            <Col span="14">
+                            <p class="title">分类</p>
+                            <h3>{{collect.cate}}</h3>
+                            </Col>
+                        </Row>
+                    </Card>
+                    </Col>
+                    <Col span="12" class="collect">
+                    <Card dis-hover>
+                        <Row>
+                            <Col span="10">
+                            <Icon type="ios-pricetags"></Icon>
+                            </Col>
+                            <Col span="14">
+                            <p class="title">标签</p>
+                            <h3>{{collect.tag}}</h3>
+                            </Col>
+                        </Row>
+                    </Card>
+                    </Col>
+                </Row>
+                </Col>-->
 			<Col :md='{span:14}'>
 			<Card dis-hover style="height: 158px">
 				<p slot="title">
@@ -74,7 +74,7 @@
 			</Card>
 			</Col>
 		</Row>
-		<Row>
+		<!--<Row>
 			<Col :md='{span:8}'>
 			<Card dis-hover style="height: 320px">
 				<p slot="title">
@@ -91,22 +91,23 @@
 				</Steps>
 			</Card>
 			</Col>
-		</Row>
+		</Row>-->
 	</div>
 </template>
 <script>
-import { admSys, admCollect } from "@/api/auth";
-export default {
-	name: "index",
-	data() {
-		return {
-			sys: {
-				arch: "--",
-				cpu: 0,
-				os: "--",
-				environment: "--"
-			},
-			collect: {
+	import {admSys} from "@/api/auth";
+
+	export default {
+		name: "index",
+		data() {
+			return {
+				sys: {
+					arch: "--",
+					cpu: 0,
+					os: "--",
+					environment: "--"
+				},
+				collect: {
 				post: 0,
 				page: 0,
 				cate: 0,
@@ -123,13 +124,13 @@ export default {
 					this.$Message.warning("未查询到系统信息,请重试！");
 				}
 			});
-			admCollect().then(resp => {
-				if (resp.code == 200) {
-					this.collect = resp.data;
-				} else {
-					this.$Message.warning("未查询到统计信息,请重试！");
-				}
-			});
+			// admCollect().then(resp => {
+			// 	if (resp.code == 200) {
+			// 		this.collect = resp.data;
+			// 	} else {
+			// 		this.$Message.warning("未查询到统计信息,请重试！");
+			// 	}
+			// });
 		}
 	},
 	mounted() {

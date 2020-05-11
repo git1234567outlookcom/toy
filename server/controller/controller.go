@@ -33,8 +33,7 @@ func RegisterController() {
 
 func Res400(e echo.Context) error { // 客户端 请求参数
 	return e.JSON(400, model.ResErr{
-		Message: util.ParameterError,
-		//Code:      400,
+		Message:   util.ParameterError,
 		Timestamp: time.Now().Unix(),
 	})
 }
@@ -48,9 +47,8 @@ func Res400Msg(e echo.Context, msg string) error { // 客户端 请求参数
 }
 func Res400Err(e echo.Context, err error) error { // 客户端 请求参数
 	return e.JSON(200, model.ResErr{
-		//Error:   err,
-		Message: util.ParameterError,
-		//Code:      400,
+		Error:     err,
+		Message:   util.ParameterError,
 		Timestamp: time.Now().Unix(),
 	})
 }
@@ -74,6 +72,6 @@ func Res200Msg(e echo.Context, msg string) error {
 func Res200Data(e echo.Context, data interface{}) error {
 	return e.JSON(http.StatusOK, model.Res{Code: 200, Timestamp: time.Now().Unix(), Message: "success", Data: data})
 }
-func Res200List(e echo.Context, data interface{}, page *model.PageInfo) error {
+func Res200List(e echo.Context, data interface{}, page *model.Page) error {
 	return e.JSON(http.StatusOK, model.Res{Data: data, PageInfo: page, Code: 200, Timestamp: time.Now().Unix(), Message: "success"})
 }

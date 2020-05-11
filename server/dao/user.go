@@ -50,7 +50,7 @@ func (d *UserDao) DeleteByFilter(filter bson.M) error {
 	return nil
 }
 
-func (d *UserDao) FindList(page *model.PageInfo) ([]*model.User, error) {
+func (d *UserDao) FindList(page *model.Page) ([]*model.User, error) {
 	option := options.Find()
 	option.SetLimit(page.Default().Limit)
 	option.SetSkip(page.Limit * (page.PageNum - 1))

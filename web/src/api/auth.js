@@ -4,7 +4,7 @@ export const apiLogin = data => {
 	return fetch.post("/auth/login", data);
 };
 export const admAuth = () => {
-	return fetch.get("/adm/auth");
+	return fetch.get("/auth/login");
 };
 export const apiLogoff = data => {
 	//   return fetch.post("/api/logoff", data);

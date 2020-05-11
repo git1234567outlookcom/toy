@@ -122,7 +122,6 @@
     </Layout>
 </template>
 <script>
-    import {admAuth} from "@/api/auth";
 
     export default {
         data() {
@@ -138,11 +137,11 @@
         },
         methods: {
             init() {
-                admAuth().then(resp => {
-                    if (resp.code == 200) {
-                        this.user = resp.data;
-                    }
-                });
+                // admAuth().then(resp => {
+                //     if (resp.code == 200) {
+                //         this.user = resp.data;
+                //     }
+                // });
             },
             logout() {
                 // this.$store.commit("logout", this);

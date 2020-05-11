@@ -24,7 +24,7 @@ func RouterCategory(g *echo.Group) {
 }
 
 func (c *CategoryController) FindList(e echo.Context) error {
-	page := new(model.PageInfo)
+	page := new(model.Page)
 	if err := e.Bind(page); err != nil {
 		e.Logger().Error(err)
 		page.Default()

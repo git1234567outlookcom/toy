@@ -22,7 +22,7 @@ func RouterTechnology(g *echo.Group) {
 }
 
 func (c *TechnologyController) FindList(e echo.Context) error {
-	page := new(model.PageInfo)
+	page := new(model.Page)
 	if err := e.Bind(page); err != nil {
 		e.Logger().Error(err)
 		page.Default()
